@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title th:text="${pageTitle}">Default Title</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/home}" th:classappend="${page == 'home' ? 'active' : ''}">Home</a></li>
+            <li><a th:href="@{/portfolio}" th:classappend="${page == 'portfolio' ? 'active' : ''}">Portfolio</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main layout:fragment="content">
+    <!-- Content will be injected here -->
+</main>
+
+</body>
+</html>
