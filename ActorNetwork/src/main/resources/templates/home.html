@@ -4,6 +4,7 @@
       layout:decorate="layout.html">
 
 <main layout:fragment="content">
-    <h1>Welcome to the Home Page!</h1>
+    <h1 th:unless="${user == null}" th:text="'Welcome, ' + ${user.firstName} + '!'"></h1>
+    <h1 th:if="${user == null}">Welcome to the Home Page!</h1>
     <p>This is the home page content.</p>
 </main>
