@@ -1,11 +1,25 @@
 package com.actornetwork.controllers;
 
+import com.actornetwork.domain.User;
+import com.actornetwork.repository.UserRepository;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.Principal;
+import java.util.Map;
 
 @Controller
 public class PageController {
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/")
     public String home() {
@@ -13,10 +27,14 @@ public class PageController {
     }
 
     @GetMapping("/home")
-    public String getHome(Model model) {
+    public String getHome(Model model, Principal principal) {
+        if(principal != null) {
+            User user = userRepository.findByEmail(principal.getName());
+            model.addAttribute("user", user);
+        }
+
         model.addAttribute("pageTitle", "Home");
         model.addAttribute("page", "home");
         return "home";
     }
-
 }

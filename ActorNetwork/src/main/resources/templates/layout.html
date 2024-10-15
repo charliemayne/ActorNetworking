@@ -6,16 +6,19 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
-
-<header>
-    <nav>
-        <ul>
-            <li><a th:href="@{/home}" th:classappend="${page == 'home' ? 'active' : ''}">Home</a></li>
-            <li><a th:href="@{/portfolio}" th:classappend="${page == 'portfolio' ? 'active' : ''}">Portfolio</a></li>
-        </ul>
-    </nav>
-</header>
-
+<th:block th:unless="${page == 'register' or page == 'login'}">
+    <header>
+        <nav>
+            <ul>
+                <li><a th:href="@{/home}" th:classappend="${page == 'home' ? 'active' : ''}">Home</a></li>
+                <li><a th:href="@{/portfolio}" th:classappend="${page == 'portfolio' ? 'active' : ''}">Portfolio</a></li>
+                <li id="logout" th:unless="${user == null}"><a th:href="@{/logout}">Logout</a></li>
+                <li th:if="${user == null}"><a th:href="@{/login}">Login</a></li>
+                <li th:if="${user == null}"><a th:href="@{/register}">Sign-up</a></li>
+            </ul>
+        </nav>
+    </header>
+</th:block>
 <main layout:fragment="content">
     <!-- Content will be injected here -->
 </main>
