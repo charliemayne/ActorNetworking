@@ -32,6 +32,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerNewUser(@RequestParam Map<String, String> params) {
+        System.out.println(params.toString());
         if(userRepository.findByEmail(params.get("email")) == null) {
             User newUser = new User(params.get("firstName"), params.get("lastName"), params.get("email"), passwordEncoder.encode(params.get("password")));
             userRepository.save(newUser);

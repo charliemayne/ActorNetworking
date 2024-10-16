@@ -26,18 +26,15 @@ public class User {
 	
 	private String email;
 	private String password;
-
-	private boolean setUpComplete = false;
-	private String about;
-
+	
 	/*
 	 * AREA TO ADD MORE USER FIELDS
 	 */
 	
 	//Lock out constructor so empty User isn't created
-	private User() {}
-
-    /**
+	private User() {};
+	
+	/**
 	 * User constructor
 	 * @param firstName
 	 * @param lastName
@@ -51,22 +48,14 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-
-
+	
+	
 	/**
 	 * @return User details in a string format
 	 */
 	@Override
 	public String toString() {
-		return "User{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", email='" + email + '\'' +
-				", password='" + password + '\'' +
-				", setUpComplete=" + setUpComplete +
-				", about='" + about + '\'' +
-				'}';
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 
 	/**
@@ -128,21 +117,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAbout() {
-        return about;
-    }
-
-    public void setAbout(String about) {
-        this.about = about;
-    }
-
-    public boolean isSetUpComplete() {
-        return setUpComplete;
-    }
-
-    public void setSetUpComplete(boolean setUpComplete) {
-        this.setUpComplete = setUpComplete;
     }
 }
