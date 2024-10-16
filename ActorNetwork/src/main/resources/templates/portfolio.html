@@ -5,7 +5,6 @@
 
 <main layout:fragment="content">
   <button id="scrollToTopBtn" class="scroll-to-top" onClick="scrollToTop()">Top</button>
-
   <script>
     function scrollToTop() {
         window.scrollTo({
@@ -14,6 +13,79 @@
         });
     }
   </script>
+  <script>
+    function showAboutEdit() {
+      var editDiv = document.getElementById("aboutEdit");
+      var aboutSection = document.getElementById("aboutSection");
+      var editAbout = document.getElementById("editAboutButton");
+      if(editDiv.style.display == "none") {
+        editDiv.style.display = "block";
+        aboutSection.style.display = "none";
+        editAbout.style.display = "none";
+      }
+      else {
+        editDiv.style.display = "none";
+        aboutSection.style.display = "block";
+        editAbout.style.display = "block";
+      }
+
+    }
+  </script>
+  <!-- Section for finish setup modal -->
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: block;
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 100px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  <div th:if="${user.setUpComplete == false}" id="finishSetupModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <h1>Finish your portfolio!</h1>
+      <form action="#" th:action="@{/portfolio}" method="post">
+        <label for="about">About:</label><br><textarea id="about" name="about"></textarea><br>
+        <!-- ADD AREA FOR PICTURE INPUT WHENEVER IMAGE DATABASE IS CONNECTED -->
+        <button type="submit">Save</button>
+      </form>
+    </div>
+
+  </div>
+  <!-- End -->
   <div class="portfolio-card">
     <div class="portfolio-header">Portfolio Page</div>
     <div class="header">
@@ -21,14 +93,22 @@
         <img src="headshot.png.JPEG" alt="Headshot">
       </div>
       <div class="name-title">
-        <div class="name">Jacob Giangiulio</div>
+        <div class="name"><p th:text="${user.firstName} + ' ' + ${user.lastName}"></p></div>
         <div class="title">Actor</div>
       </div>
     </div>
     <hr>
     <div class="about">
+      <button type="button" id="editAboutButton" style="display: block;" onclick="showAboutEdit()">Edit</button>
       <h3>About</h3>
-      <p>About me lorem ipsum dolor deez su ited ad hor fortnite goteem</p>
+      <p id="aboutSection" style="display:block;" th:text="${user.about}">About me lorem ipsum dolor deez su ited ad hor fortnite goteem</p>
+      <div id="aboutEdit" style="display: none;">
+        <form action="#" th:action="@{/portfolio}" method="post">
+          <textarea th:text="${user.about}" name="about"></textarea>
+          <button type="submit">Save</button>
+          <button type="button" onclick="showAboutEdit()">Cancel</button>
+        </form>
+      </div>
     </div>
     <hr>
     <div class="work-section">
