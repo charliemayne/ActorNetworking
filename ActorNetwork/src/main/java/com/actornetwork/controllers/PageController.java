@@ -23,7 +23,7 @@ public class PageController {
 
     @GetMapping("/")
     public String home() {
-        return "index";
+        return "home";
     }
 
     @GetMapping("/home")
@@ -36,5 +36,11 @@ public class PageController {
         model.addAttribute("pageTitle", "Home");
         model.addAttribute("page", "home");
         return "home";
+    }
+
+    @GetMapping("/portfolio")
+    public String getPortfolio(Model model, Principal principal) {
+        // todo: use principal to get the user and add user-specific info to the model
+        return "portfolio";
     }
 }

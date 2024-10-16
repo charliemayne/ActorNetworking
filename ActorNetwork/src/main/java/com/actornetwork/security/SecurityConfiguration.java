@@ -41,7 +41,9 @@ public class SecurityConfiguration{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers(mvc.pattern("/register")).permitAll()
+                        .requestMatchers(mvc.pattern("/")).permitAll()
                         .requestMatchers(mvc.pattern("/home")).permitAll()
+                        .requestMatchers(mvc.pattern("/portfolio")).permitAll()
                 )
                 .authenticationProvider(authenticationProvider())
                 .formLogin(form -> form
