@@ -21,12 +21,7 @@ public class PageController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
-
-    @GetMapping("/home")
+    @GetMapping(value = {"/", "/home"})
     public String getHome(Model model, Principal principal) {
         if(principal != null) {
             User user = userRepository.findByEmail(principal.getName());

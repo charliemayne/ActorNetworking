@@ -39,9 +39,10 @@ public class SecurityConfiguration{
         http
                 //ENABLE AT DEPLOY
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(mvc.pattern("/register")).permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(mvc.pattern("/")).permitAll()
                         .requestMatchers(mvc.pattern("/home")).permitAll()
+                        .requestMatchers(mvc.pattern("/register")).permitAll()
                 )
                 .authenticationProvider(authenticationProvider())
                 .formLogin(form -> form
