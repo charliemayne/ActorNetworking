@@ -1,14 +1,73 @@
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>firstName lastName</h1>
-    <h2>Actor</h2>
-    <script src="index.js"></script>
-  </body>
+    <title>Home | Jacobgiangiulio Com</title>
+    <link rel="canonical" href="https://jacobgiangiulio.com">
+    <meta property="og:title" content="Home | Jacobgiangiulio Com">
+    <meta property="og:url" content="https://jacobgiangiulio.com">
+    <meta property="site_name" content="Jacobgiangiulio Com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <metta name="twitter:title" content="Home | Jacobgiangiulio Com">
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body>
+    <button id="scrollToTopBtn" class="scroll-to-top" onClick="scrollToTop()">Top</button>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+    <div class="portfolio-card">
+        <div class="portfolio-header">Portfolio Page</div>
+        <div class="header">
+            <div class="headshot">
+              <img src="headshot.png.JPEG" alt="Headshot">
+            </div>
+            <div class="name-title">
+                <div class="name">Jacob Giangiulio</div>
+                <div class="title">Actor</div>
+            </div>
+        </div>
+        <hr>
+        <div class="about">
+            <h3>About</h3>
+            <p>About me lorem ipsum dolor deez su ited ad hor fortnite goteem</p>
+        </div>
+        <hr>
+        <div class="work-section">
+            <h3>My Work</h3>
+            <div class="work-item">
+                <div class="work-box">
+                    <img src="work1.png" alt="Work 1">
+                    <div>
+                        <div class="work-title">Title</div>
+                        <div class="work-role">Role</div>
+                    </div>
+                </div>
+                <a href="#">Details ></a>
+            </div>
+            <div class="work-item">
+                <div class="work-box">
+                    <img src="work2.png" alt="Work 2">
+                    <div>
+                        <div class="work-title">Title</div>
+                        <div class="work-role">Role</div>
+                    </div>
+                </div>
+                <a href="#">Details ></a>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Jacob Giangiulio, All rights reserved.</p>
+    </footer>
+</body>
 </html>
+
