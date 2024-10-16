@@ -35,7 +35,19 @@ public class PageController {
 
     @GetMapping("/portfolio")
     public String getPortfolio(Model model, Principal principal) {
-        // todo: use principal to get the user and add user-specific info to the model
+        User user = userRepository.findByEmail(principal.getName());
+        model.addAttribute("user", user);
         return "portfolio";
+    }
+
+    @PostMapping("/portfolio")
+    public String updatePortfolio(@RequestParam Map<String, String> params, Model model, Principal principal) {
+        User user = userRepository.findByEmail(principal.getName());
+        user.setSetUpComplete(true);
+        //Check if parameter was updated, then set
+        if(params.get("about") != null) { user.setAbout(params.get("about")); }
+        userRepository.save(user);
+        //TODO add more setters for other information like headshots and works
+        return "redirect:/portfolio";
     }
 }
