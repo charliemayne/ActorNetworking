@@ -43,7 +43,7 @@ public class SecurityConfiguration{
                         .requestMatchers(mvc.pattern("/register")).permitAll()
                         .requestMatchers(mvc.pattern("/")).permitAll()
                         .requestMatchers(mvc.pattern("/home")).permitAll()
-                        .requestMatchers(mvc.pattern("/portfolio")).permitAll()
+                        .requestMatchers(mvc.pattern("/portfolio")).authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
                 .formLogin(form -> form
